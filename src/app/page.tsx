@@ -1,5 +1,4 @@
-git remote add origin https://github.com/kush11-m/CozyCam.git
-git branch -M mainimport Link from 'next/link';
+import Link from 'next/link';
 
 export default function Home() {
   return (
