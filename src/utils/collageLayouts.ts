@@ -134,28 +134,6 @@ export function drawCollage(
     if (i < config.positions.length) {
       const pos = config.positions[i];
 
-      // For polaroid layout, draw white frame
-      if (layout === 'polaroid-stack') {
-        ctx.filter = 'none';
-        ctx.fillStyle = '#ffffff';
-        const padding = 15;
-        const bottomPadding = 60;
-        ctx.fillRect(
-          pos.x - padding,
-          pos.y - padding,
-          pos.width + padding * 2,
-          pos.height + padding + bottomPadding
-        );
-        ctx.filter = filter.css || 'none';
-      }
-
-      // For filmstrip, draw sprocket holes
-      if (layout === 'filmstrip') {
-        ctx.filter = 'none';
-        drawFilmSprockets(ctx, pos.y, pos.height, config.width);
-        ctx.filter = filter.css || 'none';
-      }
-
       ctx.drawImage(img, pos.x, pos.y, pos.width, pos.height);
 
       // Reset filter for timestamp
@@ -171,9 +149,6 @@ export function drawCollage(
 
   // Reset filter
   ctx.filter = 'none';
-
-  // Draw branding
-  drawBranding(ctx, config.width, config.height, layout);
 }
 
 function drawTimestamp(
